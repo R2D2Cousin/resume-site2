@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Book Review: 'Clean Code' by Robert C. Martin",
+    "date": "2025-06-15",
+    "excerpt": "An essential read for every developer. 'Clean Code' taught me the importance of writing readable and maintainable code.",
+    "rating": 5,
+    "link": "https://www.goodreads.com/book/show/3735293-clean-code"
+  },
+  {
+    "title": "Book Review: 'The Phoenix Project' by Gene Kim",
+    "date": "2025-06-10",
+    "excerpt": "A great novel that combines IT and business. This book gave me new insights into DevOps culture and collaboration.",
+    "rating": 4,
+    "link": "https://www.goodreads.com/book/show/17255186-the-phoenix-project"
+  },
+  {
+    "title": "Book Review: 'The Pragmatic Programmer' by Andrew Hunt",
+    "date": "2025-06-05",
+    "excerpt": "Packed with practical advice and tips for programmers of all levels. A must-have guide for professional growth.",
+    "rating": 5,
+    "link": "https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer"
+  }
+]

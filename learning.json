@@ -1,0 +1,12 @@
+[
+  {
+    "topic": "Linux System Administration",
+    "details": "Currently learning Linux fundamentals, command line operations, and shell scripting.",
+    "status": "In Progress"
+  },
+  {
+    "topic": "Networking Fundamentals",
+    "details": "Studying TCP/IP, subnetting, and network troubleshooting techniques.",
+    "status": "In Progress"
+  }
+]
