@@ -41,7 +41,6 @@
   </script>
 
   <style>
-    /* Ensure font applies globally */
     body {
       font-family: 'Merriweather', serif;
     }
@@ -236,6 +235,25 @@
       </div>
     </section>
 
+    <!-- Blog Section with Dropdown -->
+    <section class="mb-16 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-4 border-b-2 border-accentBlue inline-block pb-1">
+        Blog
+        <button
+          onclick="toggleDropdown('blogDropdown')"
+          class="ml-4 text-accentBlue text-lg font-medium underline hover:text-vintageBlue transition"
+          aria-expanded="false"
+          aria-controls="blogDropdown"
+        >
+          Show Topics
+        </button>
+      </h2>
+
+      <div id="blogDropdown" class="hidden space-y-8 bg-cream p-6 rounded-lg shadow border border-warmGray">
+        <!-- Blog posts loaded dynamically -->
+      </div>
+    </section>
+
     <!-- Download Resume -->
     <section class="mb-20">
       <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
@@ -278,6 +296,32 @@
   <footer class="bg-white shadow-inner text-center text-sm py-6">
     <p class="text-warmGray">&copy; 2025 Don Salvio. All rights reserved.</p>
   </footer>
-</body>
 
-</html>
+  <script>
+    function toggleDropdown(id) {
+      const menu = document.getElementById(id);
+      const button = event.target;
+      menu.classList.toggle('hidden');
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !expanded);
+    }
+
+    function setRating(rating, containerId) {
+      const stars = document.querySelectorAll(`#${containerId} .fa-star`);
+      stars.forEach((star, index) => {
+        star.classList.toggle('text-yellow-500', index < rating);
+        star.classList.toggle('text-warmGray', index >= rating);
+      });
+    }
+
+    async function loadBlogPosts() {
+      try {
+        const response = await fetch('blog-posts.json');
+        if (!response.ok) throw new Error('Failed to load blog posts.');
+
+        const posts = await response.json();
+        const container = document.getElementById('blogDropdown');
+        container.innerHTML = ''; // Clear previous content
+
+        posts.forEach((post, index) => {
+          const
