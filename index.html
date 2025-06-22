@@ -1,159 +1,158 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Don Salvio | IT Support Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Don Salvio | IT Support Resume - Vintage Style</title>
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts: Merriweather -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <script>
-    function toggleDropdown(id) {
-      const menu = document.getElementById(id);
-      menu.classList.toggle('hidden');
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#f5f1e9',
+            vintageBlue: '#3b5998',
+            accentBlue: '#6b8dbd',
+            textDark: '#2a2a2a',
+            warmGray: '#b0aca3',
+          },
+          fontFamily: {
+            serif: ['Merriweather', 'Georgia', 'serif'],
+          },
+          transitionDuration: {
+            DEFAULT: '300ms',
+          },
+        },
+      },
     }
-
-    function setRating(rating, containerId) {
-      const stars = document.querySelectorAll(`#${containerId} .fa-star`);
-      stars.forEach((star, index) => {
-        star.classList.toggle('text-yellow-500', index < rating);
-        star.classList.toggle('text-gray-400', index >= rating);
-      });
-    }
-
-    async function loadBlogPosts() {
-      const response = await fetch('blog-posts.json');
-      const posts = await response.json();
-      const container = document.getElementById('blogDropdown');
-      container.innerHTML = '';
-
-      posts.forEach((post, index) => {
-        const article = document.createElement('article');
-        article.className = "bg-white p-4 rounded shadow hover:shadow-md transition";
-
-        article.innerHTML = `
-          <h3 class="text-xl font-semibold mb-1">${post.title}</h3>
-          <p class="text-gray-600 text-sm mb-2">${post.date}</p>
-          <p class="text-gray-700">${post.excerpt}</p>
-          <div id="rating-${index}" class="interactive-rating text-lg my-2">
-            ${[1, 2, 3, 4, 5].map(i => `<i class='fas fa-star cursor-pointer ${i <= post.rating ? "text-yellow-500" : "text-gray-400"}' onclick='setRating(${i}, "rating-${index}")'></i>`).join('')}
-          </div>
-          <a href="${post.link}" class="text-blue-600 hover:underline" target="_blank">Read More</a>
-        `;
-
-        container.appendChild(article);
-      });
-
-      const suggestionBox = document.createElement('div');
-      suggestionBox.className = 'mt-6';
-      suggestionBox.innerHTML = `
-        <label for="suggestion" class="block text-gray-700 font-semibold mb-2">Have feedback or a book suggestion?</label>
-        <textarea id="suggestion" rows="3" placeholder="Share your thoughts..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
-        <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Suggestion</button>
-      `;
-      container.appendChild(suggestionBox);
-    }
-
-    async function loadLearning() {
-      const response = await fetch('learning.json');
-      const learning = await response.json();
-      const container = document.getElementById('learningDropdown');
-      container.innerHTML = '';
-
-      learning.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'bg-white p-4 rounded shadow mb-4';
-        div.innerHTML = `<h3 class="font-semibold">${item.topic}</h3><p>${item.details}</p><p class="text-sm text-gray-600">Status: ${item.status}</p>`;
-        container.appendChild(div);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadBlogPosts();
-      loadLearning();
-    });
   </script>
+
+  <style>
+    /* Ensure font applies globally */
+    body {
+      font-family: 'Merriweather', serif;
+    }
+  </style>
 </head>
-<body class="bg-cream-50 text-blue-900 font-serif">
-  <header class="bg-cream-100 shadow-md p-6 mb-8">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
+
+<body class="bg-cream text-textDark min-h-screen">
+  <header class="bg-white max-w-4xl mx-auto rounded-lg shadow-md p-8 my-10">
+    <div class="flex justify-between items-center flex-wrap gap-4">
       <div>
-        <h1 class="text-3xl font-bold tracking-wide">Don Salvio</h1>
-        <p class="text-sm tracking-wider">IT Support Specialist</p>
+        <h1 class="text-4xl font-bold tracking-wide text-vintageBlue mb-1">Don Salvio</h1>
+        <p class="text-accentBlue text-lg font-medium">IT Support Specialist</p>
       </div>
-      <div class="text-sm text-right space-y-1">
-        <p>📞 616-389-3060</p>
-        <p>📧 <a href="mailto:dsalvio0368@gmail.com" class="text-blue-700 hover:underline">dsalvio0368@gmail.com</a></p>
-        <p>🌐 <a href="https://github.com/R2D2Cousin" class="text-blue-700 hover:underline" target="_blank">GitHub</a></p>
+      <div class="text-right text-sm space-y-1">
+        <p>📞 <a href="tel:6163893060" class="hover:text-accentBlue transition">616-389-3060</a></p>
+        <p>📧 <a href="mailto:dsalvio0368@gmail.com" class="hover:text-accentBlue transition">dsalvio0368@gmail.com</a></p>
+        <p>🌐 <a href="https://github.com/R2D2Cousin" target="_blank" class="hover:text-accentBlue transition">GitHub</a></p>
       </div>
     </div>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6">
+  <main class="max-w-4xl mx-auto px-6 pb-20">
+    <!-- About Me -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        About Me
+      </h2>
+      <p class="text-textDark leading-relaxed max-w-3xl">
+        Certified IT Support Specialist with hands-on experience in building practical tools like helpdesk systems, dashboards, and system monitoring solutions. Passionate about problem-solving, Linux systems, and continuous learning.
+      </p>
+    </section>
+
     <!-- Why I'm the Right Choice -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Why I'm the Right Choice</h2>
-      <div class="bg-cream-200 p-6 rounded shadow">
-        <p class="mb-4">As someone who has worked full-time in demanding environments while pursuing a technical degree, I’ve learned to thrive under pressure and adapt quickly. My journey from CNC machining to IT support showcases my ability to pivot, learn, and apply skills in real-world settings.</p>
-        <p class="mb-4">I hold the Google IT Support Professional Certificate and am currently working toward a Bachelor of Science in Game Development at Full Sail University. I’ve also built and documented real-world tools on GitHub, including a Helpdesk Ticketing System, a System Diagnostic Tool, and a System Health Dashboard using technologies like Python, SQLite, Flask, and psutil.</p>
-        <p class="mb-4">My strength lies not only in my technical knowledge but also in my commitment to continuous learning and practical problem-solving. Whether supporting end users, building internal tools, or troubleshooting systems, I approach every task with a learner’s mindset and a drive to deliver value.</p>
-        <p>If you're looking for someone who’s self-motivated, dependable, and ready to hit the ground running in IT support or tech roles, I’m that candidate. I’m excited to bring energy, focus, and real experience to your team.</p>
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Why I'm the Right Choice
+      </h2>
+      <div class="bg-white rounded-lg shadow-md p-8 border border-warmGray max-w-3xl">
+        <p class="mb-5 leading-relaxed">
+          As someone who has worked full-time in demanding environments while pursuing a technical degree, I’ve learned to thrive under pressure and adapt quickly. My journey from CNC machining to IT support showcases my ability to pivot, learn, and apply skills in real-world settings.
+        </p>
+        <p class="mb-5 leading-relaxed">
+          I hold the Google IT Support Professional Certificate and am currently working toward a Bachelor of Science in Game Development at Full Sail University. I’ve also built and documented real-world tools on GitHub, including a Helpdesk Ticketing System, a System Diagnostic Tool, and a System Health Dashboard using technologies like Python, SQLite, Flask, and psutil.
+        </p>
+        <p class="mb-5 leading-relaxed">
+          My strength lies not only in my technical knowledge but also in my commitment to continuous learning and practical problem-solving. Whether supporting end users, building internal tools, or troubleshooting systems, I approach every task with a learner’s mindset and a drive to deliver value.
+        </p>
+        <p class="leading-relaxed">
+          If you're looking for someone who’s self-motivated, dependable, and ready to hit the ground running in IT support or tech roles, I’m that candidate. I’m excited to bring energy, focus, and real experience to your team.
+        </p>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Certifications & Skills</h2>
-      <ul class="list-disc list-inside space-y-2 text-blue-900">
-        <li><i class="fas fa-certificate text-blue-700 mr-2"></i>Google IT Support Certification</li>
+    <!-- Certifications & Skills -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Certifications & Skills
+      </h2>
+      <ul class="list-disc list-inside text-textDark max-w-md space-y-3">
+        <li><i class="fas fa-certificate text-vintageBlue mr-2"></i>Google IT Support Certification</li>
         <li><i class="fas fa-hard-hat text-yellow-600 mr-2"></i>OSHA Certified</li>
         <li><i class="fab fa-python text-green-600 mr-2"></i>Python</li>
-        <li><i class="fab fa-linux text-gray-700 mr-2"></i>Linux (Currently Learning)</li>
+        <li><i class="fab fa-linux text-gray-600 mr-2"></i>Linux (Currently Learning)</li>
         <li><i class="fab fa-github text-black mr-2"></i>Git & GitHub</li>
       </ul>
     </section>
 
-    <!-- Proficiency Bars -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Technical Proficiency</h2>
+    <!-- Technical Proficiency -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Technical Proficiency
+      </h2>
       <div class="space-y-6 max-w-md">
         <div>
-          <p class="font-semibold text-blue-900 mb-1">Python</p>
-          <div class="w-full bg-cream-300 rounded-full h-5">
-            <div class="bg-blue-700 h-5 rounded-full transition-all duration-500" style="width: 85%;"></div>
+          <p class="font-semibold text-textDark mb-1">Python</p>
+          <div class="w-full bg-warmGray rounded-full h-6 overflow-hidden">
+            <div class="bg-green-600 h-6 rounded-full transition-all duration-300" style="width: 85%;"></div>
           </div>
         </div>
         <div>
-          <p class="font-semibold text-blue-900 mb-1">Linux</p>
-          <div class="w-full bg-cream-300 rounded-full h-5">
-            <div class="bg-blue-400 h-5 rounded-full transition-all duration-500" style="width: 60%;"></div>
+          <p class="font-semibold text-textDark mb-1">Linux</p>
+          <div class="w-full bg-warmGray rounded-full h-6 overflow-hidden">
+            <div class="bg-gray-700 h-6 rounded-full transition-all duration-300" style="width: 60%;"></div>
           </div>
         </div>
         <div>
-          <p class="font-semibold text-blue-900 mb-1">Troubleshooting</p>
-          <div class="w-full bg-cream-300 rounded-full h-5">
-            <div class="bg-blue-600 h-5 rounded-full transition-all duration-500" style="width: 80%;"></div>
+          <p class="font-semibold text-textDark mb-1">Troubleshooting</p>
+          <div class="w-full bg-warmGray rounded-full h-6 overflow-hidden">
+            <div class="bg-vintageBlue h-6 rounded-full transition-all duration-300" style="width: 80%;"></div>
           </div>
         </div>
         <div>
-          <p class="font-semibold text-blue-900 mb-1">Git & GitHub</p>
-          <div class="w-full bg-cream-300 rounded-full h-5">
-            <div class="bg-black h-5 rounded-full transition-all duration-500" style="width: 75%;"></div>
+          <p class="font-semibold text-textDark mb-1">Git & GitHub</p>
+          <div class="w-full bg-warmGray rounded-full h-6 overflow-hidden">
+            <div class="bg-black h-6 rounded-full transition-all duration-300" style="width: 75%;"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Experience -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Experience</h2>
-      <div class="space-y-8 text-blue-900">
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Experience
+      </h2>
+      <div class="space-y-10 max-w-3xl">
         <div>
-          <h3 class="text-xl font-semibold">Overnight Stocker & Full-Time Student</h3>
-          <p class="italic">Walmart – Grand Rapids, MI</p>
-          <p class="text-sm">Until April 2025</p>
-          <ul class="list-disc list-inside mt-2">
+          <h3 class="text-2xl font-semibold text-textDark mb-1">Overnight Stocker & Full-Time Student</h3>
+          <p class="text-warmGray mb-1">Walmart – Grand Rapids, MI</p>
+          <p class="text-sm text-warmGray italic mb-3">Until April 2025</p>
+          <ul class="list-disc list-inside text-textDark space-y-2">
             <li>Worked full-time overnight shifts while pursuing full-time studies in Information Technology.</li>
             <li>Maintained stock levels and organized product displays to ensure efficient store operations.</li>
             <li>Operated inventory equipment and ensured accurate stock replenishment.</li>
@@ -161,20 +160,20 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-xl font-semibold">CNC Machinist</h3>
-          <p class="italic">Reed City Group – Reed City, MI</p>
-          <p class="text-sm">Sep 2022 – Oct 2024</p>
-          <ul class="list-disc list-inside mt-2">
+          <h3 class="text-2xl font-semibold text-textDark mb-1">CNC Machinist</h3>
+          <p class="text-warmGray mb-1">Reed City Group – Reed City, MI</p>
+          <p class="text-sm text-warmGray italic mb-3">Sep 2022 – Oct 2024</p>
+          <ul class="list-disc list-inside text-textDark space-y-2">
             <li>Operated CNC machinery with precision and attention to safety standards.</li>
             <li>Interpreted blueprints and technical drawings to produce high-quality parts.</li>
             <li>Maintained machines and conducted quality checks to ensure production accuracy.</li>
           </ul>
         </div>
         <div>
-          <h3 class="text-xl font-semibold">Freelance IT Projects</h3>
-          <p class="italic">Remote</p>
-          <p class="text-sm">2024 – Present</p>
-          <ul class="list-disc list-inside mt-2">
+          <h3 class="text-2xl font-semibold text-textDark mb-1">Freelance IT Projects</h3>
+          <p class="text-warmGray mb-1">Remote</p>
+          <p class="text-sm text-warmGray italic mb-3">2024 – Present</p>
+          <ul class="list-disc list-inside text-textDark space-y-2">
             <li>Developed and deployed IT tools like helpdesk ticketing systems, dashboards, and CLI utilities.</li>
             <li>Maintained GitHub repositories showcasing project code and collaboration efforts.</li>
             <li>Practiced troubleshooting, documentation, and system monitoring through real-world applications.</li>
@@ -184,90 +183,101 @@
     </section>
 
     <!-- Education -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Education</h2>
-      <div class="space-y-6 text-blue-900">
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Education
+      </h2>
+      <div class="space-y-8 max-w-3xl">
         <div>
-          <h3 class="text-xl font-semibold">Full Sail University</h3>
-          <p>Bachelor of Science in Game Development (In Progress)</p>
+          <h3 class="text-2xl font-semibold text-textDark">Full Sail University</h3>
+          <p class="text-warmGray">Bachelor of Science in Game Development (In Progress)</p>
         </div>
         <div>
-          <h3 class="text-xl font-semibold">Community College of Denver</h3>
-          <p>Coursework in Criminal Justice – Completed Dec 2021</p>
+          <h3 class="text-2xl font-semibold text-textDark">Community College of Denver</h3>
+          <p class="text-warmGray">Coursework in Criminal Justice – Completed Dec 2021</p>
         </div>
       </div>
     </section>
 
     <!-- Projects -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Projects</h2>
-      <div class="grid md:grid-cols-2 gap-6 text-blue-900">
-        <div class="bg-cream-200 p-4 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold">System Health Dashboard</h3>
-          <p>A dashboard for monitoring system performance and health using Python and web technologies.</p>
-          <a href="https://github.com/R2D2Cousin/System-health-dashboard" target="_blank" class="text-blue-700 hover:underline">🔗 GitHub Repo</a>
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Projects
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-warmGray transition hover:shadow-md">
+          <h3 class="text-xl font-semibold text-textDark mb-2">System Health Dashboard</h3>
+          <p class="text-textDark mb-3">A dashboard for monitoring system performance and health using Python and web technologies.</p>
+          <a href="https://github.com/R2D2Cousin/System-health-dashboard" target="_blank" class="text-vintageBlue hover:text-accentBlue transition font-medium">
+            🔗 GitHub Repo
+          </a>
         </div>
-        <div class="bg-cream-200 p-4 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold">Helpdesk Ticketing System</h3>
-          <p>A web-based helpdesk system built to track and manage IT support tickets.</p>
-          <a href="https://github.com/R2D2Cousin/Helpdesk-Ticketing-System" target="_blank" class="text-blue-700 hover:underline">🔗 GitHub Repo</a>
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-warmGray transition hover:shadow-md">
+          <h3 class="text-xl font-semibold text-textDark mb-2">Helpdesk Ticketing System</h3>
+          <p class="text-textDark mb-3">A web-based helpdesk system built to track and manage IT support tickets.</p>
+          <a href="https://github.com/R2D2Cousin/Helpdesk-Ticketing-System" target="_blank" class="text-vintageBlue hover:text-accentBlue transition font-medium">
+            🔗 GitHub Repo
+          </a>
         </div>
-        <div class="bg-cream-200 p-4 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold">Helpdesk CLI Tool</h3>
-          <p>A command-line helpdesk management tool for logging and tracking user-reported issues.</p>
-          <a href="https://github.com/R2D2Cousin/helpdesk" target="_blank" class="text-blue-700 hover:underline">🔗 GitHub Repo</a>
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-warmGray transition hover:shadow-md">
+          <h3 class="text-xl font-semibold text-textDark mb-2">Helpdesk CLI Tool</h3>
+          <p class="text-textDark mb-3">A command-line helpdesk management tool for logging and tracking user-reported issues.</p>
+          <a href="https://github.com/R2D2Cousin/helpdesk" target="_blank" class="text-vintageBlue hover:text-accentBlue transition font-medium">
+            🔗 GitHub Repo
+          </a>
         </div>
-        <div class="bg-cream-200 p-4 rounded shadow hover:shadow-md transition">
-          <h3 class="text-xl font-semibold">System Diagnostic Tool</h3>
-          <p>A tool to collect and analyze system diagnostics for troubleshooting and maintenance.</p>
-          <a href="https://github.com/R2D2Cousin/system-diagnostic-tool" target="_blank" class="text-blue-700 hover:underline">🔗 GitHub Repo</a>
+        <div class="bg-white rounded-lg p-6 shadow-sm border border-warmGray transition hover:shadow-md">
+          <h3 class="text-xl font-semibold text-textDark mb-2">System Diagnostic Tool</h3>
+          <p class="text-textDark mb-3">A tool to collect and analyze system diagnostics for troubleshooting and maintenance.</p>
+          <a href="https://github.com/R2D2Cousin/system-diagnostic-tool" target="_blank" class="text-vintageBlue hover:text-accentBlue transition font-medium">
+            🔗 GitHub Repo
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Dropdown sections for Blog and Currently Learning -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2 flex items-center justify-between">
-        Blog
-        <button onclick="toggleDropdown('blogDropdown')" class="text-blue-700 underline text-base">Toggle</button>
-      </h2>
-      <div id="blogDropdown" class="hidden max-w-4xl"></div>
-    </section>
-
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2 flex items-center justify-between">
-        Currently Learning
-        <button onclick="toggleDropdown('learningDropdown')" class="text-blue-700 underline text-base">Toggle</button>
-      </h2>
-      <div id="learningDropdown" class="hidden max-w-4xl"></div>
-    </section>
-
     <!-- Download Resume -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Download Resume</h2>
-      <a href="./Don_Salvio_Resume.pdf" class="inline-block bg-blue-700 text-cream-50 px-6 py-3 rounded hover:bg-blue-800 transition">Download PDF</a>
+    <section class="mb-20">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Download Resume
+      </h2>
+      <a href="./Don_Salvio_Resume.pdf" download
+        class="inline-block bg-vintageBlue text-cream px-6 py-3 rounded-md shadow hover:bg-accentBlue transition font-semibold">
+        Download PDF
+      </a>
     </section>
 
-    <!-- Contact Form -->
-    <section class="mb-12">
-      <h2 class="text-3xl font-semibold mb-6 border-b border-blue-700 pb-2">Contact Me</h2>
-      <form action="https://formspree.io/f/mldnpdyj" method="POST" class="max-w-md space-y-6 bg-cream-200 p-6 rounded shadow">
-        <label for="name" class="block font-semibold">Name</label>
-        <input type="text" id="name" name="name" required class="w-full border border-blue-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700" />
+    <!-- Contact -->
+    <section class="mb-20">
+      <h2 class="text-3xl font-semibold text-vintageBlue mb-6 border-b-2 border-accentBlue inline-block pb-1">
+        Contact Me
+      </h2>
+      <p class="max-w-md mb-6 leading-relaxed text-textDark">
+        Feel free to reach out via email or send me a message directly below.
+      </p>
+      <form action="https://formspree.io/f/mldnpdyj" method="POST" class="max-w-md space-y-6 bg-white rounded-lg p-8 shadow border border-warmGray">
+        <label for="name" class="block text-textDark font-semibold mb-2">Name</label>
+        <input type="text" id="name" name="name" required
+          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition" />
 
-        <label for="email" class="block font-semibold">Email</label>
-        <input type="email" id="email" name="_replyto" required class="w-full border border-blue-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700" />
+        <label for="email" class="block text-textDark font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="_replyto" required
+          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition" />
 
-        <label for="message" class="block font-semibold">Message</label>
-        <textarea id="message" name="message" rows="5" required class="w-full border border-blue-700 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-700"></textarea>
+        <label for="message" class="block text-textDark font-semibold mb-2">Message</label>
+        <textarea id="message" name="message" rows="5" required
+          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition"></textarea>
 
-        <button type="submit" class="bg-blue-700 text-cream-50 px-4 py-2 rounded hover:bg-blue-800 transition">Send Message</button>
+        <button type="submit" class="bg-vintageBlue text-cream px-6 py-3 rounded-md hover:bg-accentBlue transition font-semibold">
+          Send Message
+        </button>
       </form>
     </section>
   </main>
 
-  <footer class="p-6 text-center text-sm" style="background-color:#f3f0e6;">
-    &copy; 2025 Don Salvio. All rights reserved.
+  <footer class="bg-white shadow-inner text-center text-sm py-6">
+    <p class="text-warmGray">&copy; 2025 Don Salvio. All rights reserved.</p>
   </footer>
 </body>
+
 </html>
