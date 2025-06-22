@@ -41,6 +41,7 @@
   </script>
 
   <style>
+    /* Ensure font applies globally */
     body {
       font-family: 'Merriweather', serif;
     }
@@ -235,22 +236,71 @@
       </div>
     </section>
 
-    <!-- Blog Section with Dropdown -->
-    <section class="mb-16 max-w-4xl mx-auto">
+    <!-- Blog Dropdown -->
+    <section class="mb-16 max-w-4xl mx-auto px-6">
       <h2 class="text-3xl font-semibold text-vintageBlue mb-4 border-b-2 border-accentBlue inline-block pb-1">
         Blog
-        <button
-          onclick="toggleDropdown('blogDropdown')"
-          class="ml-4 text-accentBlue text-lg font-medium underline hover:text-vintageBlue transition"
-          aria-expanded="false"
-          aria-controls="blogDropdown"
-        >
+        <button onclick="toggleDropdown()" class="ml-4 text-accentBlue underline text-lg hover:text-vintageBlue transition">
           Show Topics
         </button>
       </h2>
 
-      <div id="blogDropdown" class="hidden space-y-8 bg-cream p-6 rounded-lg shadow border border-warmGray">
-        <!-- Blog posts loaded dynamically -->
+      <div
+        id="blogDropdown"
+        class="hidden space-y-8 bg-cream p-6 rounded-lg shadow border border-warmGray transition duration-300"
+      >
+        <!-- Static blog posts -->
+        <article class="bg-white p-4 rounded shadow border border-warmGray hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-vintageBlue mb-2">Why Linux is Essential for IT Support</h3>
+          <p class="text-textDark mb-3">
+            An overview of Linux fundamentals every IT support professional should know.
+          </p>
+          <button class="text-accentBlue hover:text-vintageBlue font-semibold underline transition">
+            Read More
+          </button>
+        </article>
+
+        <article class="bg-white p-4 rounded shadow border border-warmGray hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-vintageBlue mb-2">Building a Helpdesk Ticketing System</h3>
+          <p class="text-textDark mb-3">
+            Sharing the journey of creating a simple ticketing tool with Python and Flask.
+          </p>
+          <button class="text-accentBlue hover:text-vintageBlue font-semibold underline transition">
+            Read More
+          </button>
+        </article>
+
+        <article class="bg-white p-4 rounded shadow border border-warmGray hover:shadow-md transition">
+          <h3 class="text-xl font-semibold text-vintageBlue mb-2">Tips for Effective Troubleshooting</h3>
+          <p class="text-textDark mb-3">
+            Best practices and common strategies to quickly identify IT issues.
+          </p>
+          <button class="text-accentBlue hover:text-vintageBlue font-semibold underline transition">
+            Read More
+          </button>
+        </article>
+
+        <!-- Suggestion box -->
+        <div class="mt-8 bg-white p-4 rounded border border-warmGray shadow-sm">
+          <label
+            for="suggestion"
+            class="block text-textDark font-semibold mb-2"
+          >
+            Have feedback or a book suggestion?
+          </label>
+          <textarea
+            id="suggestion"
+            rows="4"
+            placeholder="Share your thoughts..."
+            class="w-full border border-warmGray rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition"
+          ></textarea>
+          <button
+            class="mt-3 bg-vintageBlue text-cream px-5 py-2 rounded hover:bg-accentBlue transition font-semibold"
+            onclick="alert('Thanks for your suggestion!')"
+          >
+            Submit Suggestion
+          </button>
+        </div>
       </div>
     </section>
 
@@ -275,53 +325,4 @@
       </p>
       <form action="https://formspree.io/f/mldnpdyj" method="POST" class="max-w-md space-y-6 bg-white rounded-lg p-8 shadow border border-warmGray">
         <label for="name" class="block text-textDark font-semibold mb-2">Name</label>
-        <input type="text" id="name" name="name" required
-          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition" />
-
-        <label for="email" class="block text-textDark font-semibold mb-2">Email</label>
-        <input type="email" id="email" name="_replyto" required
-          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition" />
-
-        <label for="message" class="block text-textDark font-semibold mb-2">Message</label>
-        <textarea id="message" name="message" rows="5" required
-          class="w-full border border-warmGray rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-vintageBlue transition"></textarea>
-
-        <button type="submit" class="bg-vintageBlue text-cream px-6 py-3 rounded-md hover:bg-accentBlue transition font-semibold">
-          Send Message
-        </button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="bg-white shadow-inner text-center text-sm py-6">
-    <p class="text-warmGray">&copy; 2025 Don Salvio. All rights reserved.</p>
-  </footer>
-
-  <script>
-    function toggleDropdown(id) {
-      const menu = document.getElementById(id);
-      const button = event.target;
-      menu.classList.toggle('hidden');
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !expanded);
-    }
-
-    function setRating(rating, containerId) {
-      const stars = document.querySelectorAll(`#${containerId} .fa-star`);
-      stars.forEach((star, index) => {
-        star.classList.toggle('text-yellow-500', index < rating);
-        star.classList.toggle('text-warmGray', index >= rating);
-      });
-    }
-
-    async function loadBlogPosts() {
-      try {
-        const response = await fetch('blog-posts.json');
-        if (!response.ok) throw new Error('Failed to load blog posts.');
-
-        const posts = await response.json();
-        const container = document.getElementById('blogDropdown');
-        container.innerHTML = ''; // Clear previous content
-
-        posts.forEach((post, index) => {
-          const
+        <input type="text" id="name" name="name"
